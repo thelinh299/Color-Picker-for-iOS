@@ -52,7 +52,10 @@ public class ColorPicker: UIControl {
         colorMap.addGestureRecognizer(colorMapTap)
 
         brightnessSlider.delegate = self
-
+        brightnessCursor.isUserInteractionEnabled = true
+        brightnessCursor.needToChangeColor = { (hexString) in
+            self.set(color: UIColor(hex: hexString), colorSpace: .sRGB)
+        }
         feedbackGenerator.prepare()
     }
 
