@@ -59,8 +59,12 @@ internal class BrightnessCursor: UIView {
 
 extension BrightnessCursor: UITextFieldDelegate {
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        needToChangeColor?(textField.text ?? "FFFFFF")
         textField.resignFirstResponder()
+        return true
+    }
+
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        needToChangeColor?(textField.text ?? "FFFFFF")
         return true
     }
 }
